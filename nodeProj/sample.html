@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="section1"> 
+	<div>CPU Utilization by Processes</div>
+	<button id="btn382" type="button">Refresh data</button>
+	<div id="div381"></div>
+	&nbsp;
+</div>
+<div id="showdata"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function (){
+		$("#btn382").click(function(){
+		$.getJSON('http://localhost:8845/', function(data){
+		var html = [];
+			for (var i=0; i<=data.length; i++) {
+   
+     			html.push("Process Id : ", data[i].PID, 		", ","       %CPU Utilization: ", data[i].CPU, "<br>");
+				$("#div381").html(html.join('')).css("background-color", "#FFFF66");
+   
+      		}
+		});
+
+	  });		
+});
+</script>
+</body>
+ </html>
+
+
